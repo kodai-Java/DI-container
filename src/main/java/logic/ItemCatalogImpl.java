@@ -1,13 +1,15 @@
 package logic;
 
+import annotation.Resource;
 import dataaccess.ItemDao;
+import dataaccess.ItemDaoImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ItemCatalogImpl implements ItemCatalog {
 
-    private ItemDao dao = ItemDao.getInstance();
+    @Resource(ItemDaoImpl.class)
+    private ItemDao dao;
 
     public List<Item> getAll() {
         return dao.findAll();
